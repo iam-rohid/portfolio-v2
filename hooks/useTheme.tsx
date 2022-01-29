@@ -11,9 +11,19 @@ const ThemeProvider = ({ children }: { children: JSX.Element }) => {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    document.documentElement.classList.remove("dark");
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
+    if (typeof window) {
+      setDarkMode(localStorage.getItem("theme") === "dark");
+    }
+  }, [typeof window]);
+
+  useEffect(() => {
+    if (typeof window) {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+      if (darkMode) {
+        localStorage.setItem("theme", "dark");
+        document.documentElement.classList.add("dark");
+      }
     }
   }, [darkMode]);
 
