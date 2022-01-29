@@ -3,6 +3,7 @@ import { AppProps } from "next/app";
 import "tailwindcss/tailwind.css";
 import NavBar from "../components/NavBar";
 import ThemeProvider from "../hooks/useTheme";
+import Footer from "../components/Footer";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -10,6 +11,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <Fragment>
         <NavBar />
         <Component {...pageProps} />
+        <Footer />
       </Fragment>
     </ThemeProvider>
   );
