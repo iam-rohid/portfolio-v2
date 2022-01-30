@@ -11,7 +11,7 @@ const BlogCard = ({ blog }: { blog: BlogType }) => {
           <h4 className="font-bold flex-1 text-xl mb-1">{blog.title}</h4>
           <div className="flex gap-4 mb-2">
             <p className="opacity-75">3.5 min read</p>
-            <p className="opacity-75">34302 Views</p>
+            {/* <p className="opacity-75">34302 Views</p> */}
           </div>
           <p className="opacity-75">{blog.excerpt}</p>
         </article>
