@@ -1,11 +1,12 @@
 import { gql } from "@apollo/client";
 import { GetStaticProps } from "next";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import PageHeader from "../../components/PageHeader";
 import BlogsList from "../../components/BlogsList";
 import SectionWithTitle from "../../components/SectionWithTitle";
 import client from "../../lib/apolloClient";
 import { BlogType } from "../../types";
+import { match } from "assert";
 
 const BlogsPage = ({
   allBlogs,
@@ -15,6 +16,27 @@ const BlogsPage = ({
   featuredBlogs: BlogType[];
 }) => {
   const [searchValue, setSearchValue] = useState("");
+  const [blogs, setBlogs] = useState<BlogType[]>([]);
+
+  useEffect(() => {
+    let _blogs: BlogType[] = [];
+    let searchKeywords = searchValue.split(" ");
+    _blogs = allBlogs.filter((b) => {
+      let matched = false;
+      searchKeywords.forEach((key) => {
+        if (b.title.toLowerCase().match(key.toLowerCase())) {
+          matched = true;
+          return;
+        } else if (b.excerpt.toLowerCase().match(key.toLowerCase())) {
+          matched = true;
+          return;
+        }
+      });
+      return matched;
+    });
+    setBlogs(_blogs);
+  }, [searchValue]);
+
   return (
     <Fragment>
       <PageHeader
@@ -23,12 +45,20 @@ const BlogsPage = ({
         onSearchValueChange={setSearchValue}
       />
       <main className="flex flex-col gap-16 py-16">
-        <SectionWithTitle title="Featured Blogs">
-          <BlogsList blogs={featuredBlogs} />
-        </SectionWithTitle>
-        <SectionWithTitle title="All Blogs">
-          <BlogsList blogs={allBlogs} />
-        </SectionWithTitle>
+        {searchValue ? (
+          <SectionWithTitle title="Results">
+            <BlogsList blogs={blogs} />
+          </SectionWithTitle>
+        ) : (
+          <Fragment>
+            <SectionWithTitle title="Featured Blogs">
+              <BlogsList blogs={featuredBlogs} />
+            </SectionWithTitle>
+            <SectionWithTitle title="All Blogs">
+              <BlogsList blogs={allBlogs} />
+            </SectionWithTitle>
+          </Fragment>
+        )}
       </main>
     </Fragment>
   );

@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 import { GetStaticProps } from "next";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import PageHeader from "../../components/PageHeader";
 import ProjectsList from "../../components/ProjectsList";
 import SectionWithTitle from "../../components/SectionWithTitle";
@@ -15,6 +15,27 @@ const ProjectsPage = ({
   featuredProjects: ProjectType[];
 }) => {
   const [searchValue, setSearchValue] = useState("");
+  const [projects, setProjects] = useState<ProjectType[]>([]);
+
+  useEffect(() => {
+    let _projects: ProjectType[] = [];
+    let searchKeywords = searchValue.split(" ");
+    _projects = allProjects.filter((b) => {
+      let matched = false;
+      searchKeywords.forEach((key) => {
+        if (b.title.toLowerCase().match(key.toLowerCase())) {
+          matched = true;
+          return;
+        } else if (b.category.title.toLowerCase().match(key.toLowerCase())) {
+          matched = true;
+          return;
+        }
+      });
+      return matched;
+    });
+    setProjects(_projects);
+  }, [searchValue]);
+
   return (
     <Fragment>
       <PageHeader
@@ -23,12 +44,20 @@ const ProjectsPage = ({
         onSearchValueChange={setSearchValue}
       />
       <main className="flex flex-col gap-16 py-16">
-        <SectionWithTitle title="Featured Projects">
-          <ProjectsList projects={featuredProjects} />
-        </SectionWithTitle>
-        <SectionWithTitle title="All Projects">
-          <ProjectsList projects={allProjects} />
-        </SectionWithTitle>
+        {searchValue ? (
+          <SectionWithTitle title="Results">
+            <ProjectsList projects={projects} />
+          </SectionWithTitle>
+        ) : (
+          <Fragment>
+            <SectionWithTitle title="Featured Projects">
+              <ProjectsList projects={featuredProjects} />
+            </SectionWithTitle>
+            <SectionWithTitle title="All Projects">
+              <ProjectsList projects={allProjects} />
+            </SectionWithTitle>
+          </Fragment>
+        )}
       </main>
     </Fragment>
   );
