@@ -1,4 +1,3 @@
-import { HomeIcon, LinkIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import React from "react";
 import Container from "../components/Container";
@@ -7,21 +6,24 @@ import GitHubIcon from "../components/icons/GitHubIcon";
 import InstagramIcon from "../components/icons/InstagramIcon";
 import PetreonIcon from "../components/icons/PetreonIcon";
 import TwitterIcon from "../components/icons/TwitterIcon";
-import PostCard from "../components/PostCard";
+import NewsLatterForm from "../components/NewsLatterForm";
+import PostsList from "../components/PostsList";
+import ProjectsList from "../components/ProjectsList";
+import SectionWithTitle from "../components/SectionWithTitle";
 import IconLink from "../components/SocialLinkButton";
 
 const HomePage = () => {
   return (
-    <main>
+    <main className="flex flex-col gap-16 py-16">
       <section>
         <Container>
-          <div className="flex gap-8 mt-16 items-center flex-col-reverse sm:flex-row">
+          <div className="flex gap-8 items-center flex-col-reverse sm:flex-row">
             <div className="flex-1 text-center sm:text-left">
               <h1 className="text-4xl mb-2 font-bold">Rohidul Islam</h1>
               <h2 className="text-lg mb-2">
                 Self thought <b>full-stack developer</b>
               </h2>
-              <p className="text-lg mb-6">
+              <p className="text-lg mb-6 opacity-75">
                 I do web development with React/Next.js. Learning SwiftUI and
                 iOS development.
               </p>
@@ -65,32 +67,55 @@ const HomePage = () => {
       </section>
       <section>
         <Container>
-          <div className="mt-16">
-            <h3 className="text-3xl font-bold mb-4">Featured Posts</h3>
-            <div className="flex flex-col gap-2">
-              <PostCard />
-              <PostCard />
-              <PostCard />
-            </div>
-            <Link href="#">
-              <a className="pt-2 inline-block">See all posts</a>
-            </Link>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <StatsItem
+              title="All-time Views"
+              value="20320"
+              href="https://github.com/rohidisdev"
+            />
+            <StatsItem
+              title="GitHub Followers"
+              value="20"
+              href="https://github.com/rohidisdev"
+            />
+            <StatsItem
+              title="GitHub Stars"
+              value="40"
+              href="https://github.com/rohidisdev"
+            />
+            <StatsItem
+              title="YouTube Subscribers"
+              value="100"
+              href="https://github.com/rohidisdev"
+            />
+            <StatsItem
+              title="YouTube Views"
+              value="40"
+              href="https://github.com/rohidisdev"
+            />
+            <StatsItem
+              title="YouTube Subscribers"
+              value="100"
+              href="https://github.com/rohidisdev"
+            />
           </div>
         </Container>
       </section>
+
+      <SectionWithTitle title="Featured Projects">
+        <ProjectsList />
+      </SectionWithTitle>
+
+      <SectionWithTitle title="Featured Posts">
+        <PostsList />
+      </SectionWithTitle>
+
+      <SectionWithTitle title="All Posts">
+        <PostsList />
+      </SectionWithTitle>
       <section>
         <Container>
-          <div className="mt-16">
-            <h3 className="text-3xl font-bold mb-4">Recent Posts</h3>
-            <div className="flex flex-col gap-2">
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-            </div>
-          </div>
+          <NewsLatterForm />
         </Container>
       </section>
     </main>
@@ -98,3 +123,24 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+const StatsItem = ({
+  title,
+  value,
+  href,
+}: {
+  title: string;
+  value: string;
+  href: string;
+}) => {
+  return (
+    <Link href={href}>
+      <a target="_blank">
+        <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:hover:border-gray-700 px-4 py-6 rounded-xl flex items-center justify-center flex-col gap-2">
+          <h3 className="sm:text-xl truncate font-medium">{title}</h3>
+          <p className="sm:text-lg opacity-75">{value}</p>
+        </div>
+      </a>
+    </Link>
+  );
+};

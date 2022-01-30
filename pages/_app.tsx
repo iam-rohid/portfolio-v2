@@ -4,6 +4,7 @@ import "tailwindcss/tailwind.css";
 import NavBar from "../components/NavBar";
 import ThemeProvider from "../hooks/useTheme";
 import Footer from "../components/Footer";
+import "../styles/main.scss";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

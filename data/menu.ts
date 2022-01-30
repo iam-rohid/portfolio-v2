@@ -4,12 +4,12 @@ export const menu = [
     href: "/",
   },
   {
-    name: "Dashboard",
-    href: "/dashboard",
+    name: "Blogs",
+    href: "/blogs",
   },
   {
-    name: "Blog",
-    href: "/blog",
+    name: "Projects",
+    href: "/projects",
   },
   {
     name: "Snippets",

@@ -68,7 +68,7 @@ const NavButton = ({
   return (
     <button
       onClick={onClick}
-      className={`w-11 h-11 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 active:opacity-75 ${className}`}
+      className={`w-11 h-11 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 ${className}`}
     >
       <Icon className="w-6 h-6" />
     </button>
@@ -92,7 +92,7 @@ const InlineMenuItem = ({ name, href }: { name: string; href: string }) => {
     <li>
       <Link href={`${href}`}>
         <a
-          className={`font-medium whitespace-nowrap px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 active:opacity-75 ${
+          className={`font-medium whitespace-nowrap px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 ${
             match ? "opacity-100" : "opacity-60"
           }`}
         >
