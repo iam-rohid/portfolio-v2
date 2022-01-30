@@ -9,7 +9,7 @@ import GitHubIcon from "../components/icons/GitHubIcon";
 import InstagramIcon from "../components/icons/InstagramIcon";
 import PetreonIcon from "../components/icons/PetreonIcon";
 import TwitterIcon from "../components/icons/TwitterIcon";
-import NewsLatterForm from "../components/NewsLatterForm";
+import NewsLatterForm from "../components/NewsLetterForm";
 import ProjectsList from "../components/ProjectsList";
 import SectionWithTitle from "../components/SectionWithTitle";
 import IconLink from "../components/SocialLinkButton";

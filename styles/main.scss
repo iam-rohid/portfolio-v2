@@ -1,3 +1,41 @@
+@tailwind components;
+@import "material-darker";
 .dark {
   color-scheme: dark;
+}
+
+@layer components {
+  .container {
+    @apply w-full max-w-6xl mx-auto px-4 md:px-8;
+  }
+  .prose,
+  .prose-lg {
+    @apply text-gray-900 dark:text-white max-w-none;
+    p,
+    li,
+    strong,
+    ul,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    code,
+    a,
+    h6 {
+      @apply text-gray-900 dark:text-white;
+    }
+    code {
+      @apply bg-gray-200 dark:bg-gray-700 p-1 rounded;
+    }
+    pre {
+      @apply bg-gray-800 rounded-xl text-white p-0;
+      code.hljs {
+        @apply bg-transparent dark:bg-transparent text-white p-4 sm:p-6 text-base;
+      }
+      .hljs-comment {
+        @apply text-gray-400;
+      }
+    }
+  }
 }

@@ -5,7 +5,7 @@ import { BlogType } from "../types";
 
 const BlogCard = ({ blog }: { blog: BlogType }) => {
   return (
-    <Link href="#">
+    <Link href={`/blogs/${blog.slug}`}>
       <a>
         <article className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-800 p-4 rounded-xl hover:border-gray-300 dark:hover:border-gray-600">
           <h4 className="font-medium flex-1 text-xl mb-1">{blog.title}</h4>
