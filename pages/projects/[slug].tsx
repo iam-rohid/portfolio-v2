@@ -24,7 +24,7 @@ const ProjectPage = ({ project }: { project: ProjectType }) => {
           </div>
         </Container>
         <Container className="mt-8 max-w-4xl">
-          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden">
+          <div className="relative aspect-video rounded-2xl overflow-hidden w-full">
             <Image
               src={project.coverPhoto.url}
               alt="Project Cover Photo"
