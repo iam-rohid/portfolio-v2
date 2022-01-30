@@ -1,9 +1,9 @@
 import { gql } from "@apollo/client";
-import moment from "moment";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import React, { Fragment } from "react";
 import Container from "../../components/Container";
+import CustomHead from "../../components/CustomHead";
 import Markdown from "../../components/Markdown";
 import NewsLetterForm from "../../components/NewsLetterForm";
 import client from "../../lib/apolloClient";
@@ -12,6 +12,14 @@ import { ProjectType } from "../../types";
 const ProjectPage = ({ project }: { project: ProjectType }) => {
   return (
     <Fragment>
+      <CustomHead
+        title={project.title}
+        description={project.body.slice(0, 200)}
+        image={project.coverPhoto.url}
+        alt={`${project.title} cover photo`}
+        canonical={`https://rohidulislam.com/projects/${project.slug}`}
+        keywords={project.tags}
+      />
       <header className="py-8">
         <Container>
           <div className="flex flex-col items-start">
@@ -92,6 +100,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           tags
           createdAt
           updatedAt
+          tags
           category {
             slug
             title

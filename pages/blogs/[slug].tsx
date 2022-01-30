@@ -3,6 +3,7 @@ import moment from "moment";
 import { GetStaticPaths, GetStaticProps } from "next";
 import React, { Fragment } from "react";
 import Container from "../../components/Container";
+import CustomHead from "../../components/CustomHead";
 import Markdown from "../../components/Markdown";
 import NewsLetterForm from "../../components/NewsLetterForm";
 import client from "../../lib/apolloClient";
@@ -11,6 +12,12 @@ import { BlogType } from "../../types";
 const BlogPage = ({ blog }: { blog: BlogType }) => {
   return (
     <Fragment>
+      <CustomHead
+        title={blog.title}
+        description={blog.excerpt}
+        canonical={`https://rohidulislam.com/blogs/${blog.slug}`}
+        keywords={blog.tags}
+      />
       <header className="py-16">
         <Container>
           <div className="flex flex-col items-start">
@@ -88,6 +95,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           tags
           createdAt
           updatedAt
+          excerpt
           category {
             slug
             title

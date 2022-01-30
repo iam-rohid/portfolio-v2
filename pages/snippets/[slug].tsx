@@ -1,9 +1,8 @@
 import { gql } from "@apollo/client";
-import moment from "moment";
 import { GetStaticPaths, GetStaticProps } from "next";
-import Image from "next/image";
 import React, { Fragment } from "react";
 import Container from "../../components/Container";
+import CustomHead from "../../components/CustomHead";
 import Markdown from "../../components/Markdown";
 import NewsLetterForm from "../../components/NewsLetterForm";
 import client from "../../lib/apolloClient";
@@ -12,6 +11,12 @@ import { SnippetType } from "../../types";
 const ProjectPage = ({ snippet }: { snippet: SnippetType }) => {
   return (
     <Fragment>
+      <CustomHead
+        title={snippet.title}
+        description={snippet.body.slice(0, 200)}
+        canonical={`https://rohidulislam.com/snippets/${snippet.slug}`}
+        keywords={snippet.tags}
+      />
       <header className="py-8">
         <Container>
           <div className="flex flex-col items-start">

@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 import { GetStaticProps } from "next";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -28,6 +29,36 @@ const HomePage = ({
 }) => {
   return (
     <main className="flex flex-col gap-16 py-16">
+      <Head>
+        <title>Rohidul Islam</title>
+        <meta
+          name="description"
+          content="Tutorials on React, Next.js, HTML, CSS, TypeScript, JavaScript, Tailwind CSS and many more..."
+        />
+        <meta property="og:title" content="Rohidul Islam" />
+        <meta
+          property="og:description"
+          content="Tutorials on React, Next.js, HTML, CSS, TypeScript, JavaScript, Tailwind CSS and many more..."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://rohidulislam.com/images/avatar.jpg"
+        />
+        <meta property="og:image:alt" content="Rohidul Islam avatar image" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Rohidul Islam" />
+        <meta name="twitter:creator" content="@rohidisdev" />
+        <meta
+          name="twitter:descripton"
+          content="Tutorials on React, Next.js, HTML, CSS, TypeScript, JavaScript, Tailwind CSS and many more..."
+        />
+        <meta
+          name="twitter:image"
+          content="https://rohidulislam.com/images/avatar.jpg"
+        />
+        <link rel="canonical" href="https://rohidulislam.com" />
+      </Head>
       <section>
         <Container>
           <div className="flex gap-8 items-center flex-col-reverse sm:flex-row">
@@ -120,11 +151,11 @@ const HomePage = ({
         <ProjectsList projects={featuredProjects} />
       </SectionWithTitle>
 
-      <SectionWithTitle title="Featured Posts">
+      <SectionWithTitle title="Featured Blogs">
         <BlogsList blogs={featuredBlogs} />
       </SectionWithTitle>
 
-      <SectionWithTitle title="Recent Posts">
+      <SectionWithTitle title="Recent Blogs">
         <BlogsList blogs={recentBlogs} />
       </SectionWithTitle>
       <section>

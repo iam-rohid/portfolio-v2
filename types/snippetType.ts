@@ -5,6 +5,7 @@ export type SnippetType = {
   title: string;
   excerpt: string;
   body?: string;
+  tags?: string;
   isFeatured: boolean;
   category: CategoryType;
   updatedAt: string;

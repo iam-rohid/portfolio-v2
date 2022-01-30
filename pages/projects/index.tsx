@@ -40,7 +40,7 @@ const ProjectsPage = ({
   return (
     <Fragment>
       <PageHeader
-        title="My Projects"
+        title="Projects"
         description="Here are some of my projects. Some of them are public and others are private. You can find source code inside if it's a public project."
         searchValue={searchValue}
         onSearchValueChange={setSearchValue}

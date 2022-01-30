@@ -1,10 +1,11 @@
 import { SearchIcon } from "@heroicons/react/outline";
+import Head from "next/head";
 import React from "react";
 import Container from "./Container";
 
 const PageHeader = ({
   title,
-  description: desc,
+  description,
   searchValue,
   onSearchValueChange,
   hideSearchBar,
@@ -17,9 +18,13 @@ const PageHeader = ({
 }) => {
   return (
     <header className="mt-16">
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+      </Head>
       <Container>
         <h1 className="text-4xl font-black mb-4">{title}</h1>
-        <p className="opacity-75 mb-4">{desc}</p>
+        <p className="opacity-75 mb-4">{description}</p>
         {!hideSearchBar && (
           <form>
             <div className="flex gap-4 relative items-center">
