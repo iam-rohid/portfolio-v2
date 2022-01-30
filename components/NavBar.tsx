@@ -68,7 +68,7 @@ const NavButton = ({
   return (
     <button
       onClick={onClick}
-      className={`w-11 h-11 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 ${className}`}
+      className={`w-11 h-11 flex items-center justify-center rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 ${className}`}
     >
       <Icon className="w-6 h-6" />
     </button>

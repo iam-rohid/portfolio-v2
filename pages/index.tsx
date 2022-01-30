@@ -1,5 +1,8 @@
+import { gql } from "@apollo/client";
+import { GetStaticProps } from "next";
 import Link from "next/link";
 import React from "react";
+import BlogsList from "../components/BlogsList";
 import Container from "../components/Container";
 import BuyMeACoffeeIcon from "../components/icons/BuyMeACoffeeIcon";
 import GitHubIcon from "../components/icons/GitHubIcon";
@@ -7,12 +10,22 @@ import InstagramIcon from "../components/icons/InstagramIcon";
 import PetreonIcon from "../components/icons/PetreonIcon";
 import TwitterIcon from "../components/icons/TwitterIcon";
 import NewsLatterForm from "../components/NewsLatterForm";
-import PostsList from "../components/PostsList";
 import ProjectsList from "../components/ProjectsList";
 import SectionWithTitle from "../components/SectionWithTitle";
 import IconLink from "../components/SocialLinkButton";
+import client from "../lib/apolloClient";
+import { BlogType, ProjectType } from "../types";
 
-const HomePage = () => {
+const HomePage = ({
+  recentBlogs,
+  featuredBlogs,
+  featuredProjects,
+}: {
+  recentBlogs: BlogType[];
+  featuredBlogs: BlogType[];
+  featuredProjects: ProjectType[];
+}) => {
+  console.log(featuredProjects);
   return (
     <main className="flex flex-col gap-16 py-16">
       <section>
@@ -103,15 +116,15 @@ const HomePage = () => {
       </section>
 
       <SectionWithTitle title="Featured Projects">
-        <ProjectsList />
+        <ProjectsList projects={featuredProjects} />
       </SectionWithTitle>
 
       <SectionWithTitle title="Featured Posts">
-        <PostsList />
+        <BlogsList blogs={featuredBlogs} />
       </SectionWithTitle>
 
-      <SectionWithTitle title="All Posts">
-        <PostsList />
+      <SectionWithTitle title="Recent Posts">
+        <BlogsList blogs={recentBlogs} />
       </SectionWithTitle>
       <section>
         <Container>
@@ -143,4 +156,70 @@ const StatsItem = ({
       </a>
     </Link>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const {
+    data: { blogs: recentBlogs },
+  } = await client.query({
+    query: gql`
+      query GetData {
+        blogs(orderBy: createdAt_DESC, first: 10) {
+          slug
+          title
+          excerpt
+          createdAt
+          updatedAt
+        }
+      }
+    `,
+  });
+  const {
+    data: { blogs: featuredBlogs },
+  } = await client.query({
+    query: gql`
+      query GetData {
+        blogs(orderBy: createdAt_DESC, first: 3, where: { isFeatured: true }) {
+          slug
+          title
+          excerpt
+          createdAt
+          updatedAt
+        }
+      }
+    `,
+  });
+
+  const {
+    data: { projects: featuredProjects },
+  } = await client.query({
+    query: gql`
+      query GetData {
+        projects(
+          orderBy: createdAt_DESC
+          first: 2
+          where: { isFeatured: true }
+        ) {
+          slug
+          title
+          category {
+            slug
+            title
+          }
+          coverPhoto {
+            url
+          }
+          createdAt
+          updatedAt
+        }
+      }
+    `,
+  });
+  return {
+    props: {
+      recentBlogs,
+      featuredBlogs,
+      featuredProjects,
+    },
+  };
 };

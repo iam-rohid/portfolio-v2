@@ -19,7 +19,9 @@ const Footer = () => {
                 {menu.map((item, i) => (
                   <li key={i}>
                     <Link href={item.href}>
-                      <a>{item.name}</a>
+                      <a className="opacity-75 hover:opacity-100">
+                        {item.name}
+                      </a>
                     </Link>
                   </li>
                 ))}
@@ -31,22 +33,22 @@ const Footer = () => {
               <ul className="flex flex-col gap-1">
                 <li>
                   <Link href="https://www.youtube.com/channel/UCh1no8hy0A5Daj7SVJVH15A">
-                    <a>YouTube</a>
+                    <a className="opacity-75 hover:opacity-100">YouTube</a>
                   </Link>
                 </li>
                 <li>
                   <Link href="https://twitter.com/rohidisdev">
-                    <a>Twitter</a>
+                    <a className="opacity-75 hover:opacity-100">Twitter</a>
                   </Link>
                 </li>
                 <li>
                   <Link href="https://instagram.com/rohidisdev">
-                    <a>Instagram</a>
+                    <a className="opacity-75 hover:opacity-100">Instagram</a>
                   </Link>
                 </li>
                 <li>
                   <Link href="https://github.com/rohidisdev">
-                    <a>GitHub</a>
+                    <a className="opacity-75 hover:opacity-100">GitHub</a>
                   </Link>
                 </li>
               </ul>
@@ -56,12 +58,14 @@ const Footer = () => {
               <ul className="flex flex-col gap-1">
                 <li>
                   <Link href="https://www.patreon.com/rohid">
-                    <a>Patreon</a>
+                    <a className="opacity-75 hover:opacity-100">Patreon</a>
                   </Link>
                 </li>
                 <li>
                   <Link href="https://www.buymeacoffee.com/rohid">
-                    <a>Buy me a coffee</a>
+                    <a className="opacity-75 hover:opacity-100">
+                      Buy me a coffee
+                    </a>
                   </Link>
                 </li>
               </ul>

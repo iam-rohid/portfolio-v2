@@ -1,10 +1,13 @@
+import { gql } from "@apollo/client";
+import { GetStaticProps } from "next";
 import React, { Fragment } from "react";
 import Container from "../../components/Container";
 import PageHeader from "../../components/PageHeader";
-import SectionWithTitle from "../../components/SectionWithTitle";
 import SnippetsList from "../../components/SnippetsList";
+import client from "../../lib/apolloClient";
+import { SnippetType } from "../../types";
 
-const SnippetsPage = () => {
+const SnippetsPage = ({ snippets }: { snippets: SnippetType[] }) => {
   return (
     <Fragment>
       <PageHeader
@@ -13,7 +16,7 @@ const SnippetsPage = () => {
       />
       <main className="flex flex-col gap-16 py-16">
         <Container>
-          <SnippetsList />
+          <SnippetsList snippets={snippets} />
         </Container>
       </main>
     </Fragment>
@@ -21,3 +24,31 @@ const SnippetsPage = () => {
 };
 
 export default SnippetsPage;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const {
+    data: { snippets },
+  } = await client.query({
+    query: gql`
+      query MyQuery {
+        snippets(orderBy: updatedAt_DESC) {
+          slug
+          title
+          excerpt
+          isFeatured
+          updatedAt
+          createdAt
+          category {
+            title
+            slug
+          }
+        }
+      }
+    `,
+  });
+  return {
+    props: {
+      snippets,
+    },
+  };
+};
