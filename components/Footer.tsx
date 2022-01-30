@@ -70,11 +70,23 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
+            <div className="flex flex-col gap-2">
+              <b>Legal</b>
+              <ul className="flex flex-col gap-1">
+                <li>
+                  <Link href="/privacy-policy">
+                    <a className="opacity-75 hover:opacity-100">
+                      Privacy Policy
+                    </a>
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div>
           <p className="opacity-75 py-6">
-            © 2022 Rohidul Islam. All Rights Reserved.
+            Copyright © 2022 Rohidul Islam. All rights reserved.
           </p>
         </div>
       </Container>
