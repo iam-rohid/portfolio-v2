@@ -5,7 +5,7 @@ import moment from "moment";
 
 const SnippetCard = ({ snippet }: { snippet: SnippetType }) => {
   return (
-    <Link href="#">
+    <Link href={`/snippets/${snippet.slug}`}>
       <a>
         <article className="bg-white dark:bg-gray-800 border overflow-hidden border-gray-100 dark:border-gray-800 rounded-xl hover:border-gray-300 dark:hover:border-gray-600 p-4">
           <div className="flex justify-between items-center mb-2 gap-2">
@@ -16,7 +16,7 @@ const SnippetCard = ({ snippet }: { snippet: SnippetType }) => {
               {moment(snippet.updatedAt).format("DD MMM, yyy")}
             </p>
           </div>
-          <h4 className="font-medium flex-1 text-xl">{snippet.title}</h4>
+          <h4 className="font-bold flex-1 text-xl">{snippet.title}</h4>
           <p className="opacity-75">{snippet.excerpt}</p>
         </article>
       </a>

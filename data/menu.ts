@@ -15,8 +15,8 @@ export const menu = [
     name: "Snippets",
     href: "/snippets",
   },
-  {
-    name: "Contact",
-    href: "/contact",
-  },
+  // {
+  //   name: "Contact",
+  //   href: "/contact",
+  // },
 ];

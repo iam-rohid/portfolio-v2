@@ -78,7 +78,7 @@ const HomePage = ({
           </div>
         </Container>
       </section>
-      <section>
+      {/* <section>
         <Container>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
             <StatsItem
@@ -113,7 +113,7 @@ const HomePage = ({
             />
           </div>
         </Container>
-      </section>
+      </section> */}
 
       <SectionWithTitle title="Featured Projects">
         <ProjectsList projects={featuredProjects} />

@@ -15,7 +15,7 @@ const SectionWithTitle = ({
   return (
     <section id={sectionId}>
       <Container>
-        <h3 className="text-3xl font-bold mb-4">{title}</h3>
+        <h3 className="text-2xl font-bold mb-4">{title}</h3>
         {description && <p className="opacity-75">{description}</p>}
         {children}
       </Container>

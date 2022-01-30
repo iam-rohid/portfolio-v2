@@ -1,5 +1,13 @@
 @tailwind components;
+@import "./fonts";
 @import "material-darker";
+
+html {
+  font-family: "wotfardregular", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
 .dark {
   color-scheme: dark;
 }

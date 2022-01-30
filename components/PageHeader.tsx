@@ -18,7 +18,7 @@ const PageHeader = ({
   return (
     <header className="mt-16">
       <Container>
-        <h1 className="text-4xl font-bold mb-4">{title}</h1>
+        <h1 className="text-4xl font-black mb-4">{title}</h1>
         <p className="opacity-75 mb-4">{desc}</p>
         {!hideSearchBar && (
           <form>

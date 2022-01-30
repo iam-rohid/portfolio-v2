@@ -18,8 +18,10 @@ const NavBar = () => {
   }, [showSideBar]);
 
   return (
-    <nav className={``}>
-      <Container className="flex items-center justify-between gap-4 h-20">
+    <nav
+      className={`sticky top-0 left-0 right-0 z-50 backdrop-blur-lg bg-gray-100 dark:bg-gray-900`}
+    >
+      <Container className="flex items-center justify-between gap-4 h-14">
         <NavButton
           Icon={showSideBar ? XIcon : MenuIcon}
           onClick={() => {
@@ -27,13 +29,6 @@ const NavBar = () => {
           }}
           className={`flex sm:hidden`}
         />
-
-        <Link href={`/`}>
-          <a>
-            <h2 className="font-bold text-2xl">Rohid</h2>
-          </a>
-        </Link>
-
         <InlineMenu className="hidden sm:flex" />
         <div className="flex-1" />
         <NavButton
@@ -77,7 +72,7 @@ const NavButton = ({
 
 const InlineMenu = ({ className }: { className?: string }) => {
   return (
-    <ul className={`flex items-center ${className}`}>
+    <ul className={`flex items-center gap-4 ${className}`}>
       {menu.map((item, i) => (
         <InlineMenuItem name={item.name} href={item.href} key={i} />
       ))}
@@ -92,8 +87,8 @@ const InlineMenuItem = ({ name, href }: { name: string; href: string }) => {
     <li>
       <Link href={`${href}`}>
         <a
-          className={`font-medium whitespace-nowrap px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 ${
-            match ? "opacity-100" : "opacity-60"
+          className={`font-medium whitespace-nowrap ${
+            match ? "opacity-100" : "opacity-60 hover:opacity-100"
           }`}
         >
           {name}

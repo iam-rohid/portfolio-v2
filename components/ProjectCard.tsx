@@ -5,7 +5,7 @@ import { ProjectType } from "../types";
 
 const ProjectCard = ({ project }: { project: ProjectType }) => {
   return (
-    <Link href="#">
+    <Link href={`/projects/${project.slug}`}>
       <a>
         <article className="bg-white dark:bg-gray-800 border overflow-hidden border-gray-100 dark:border-gray-800 rounded-xl hover:border-gray-300 dark:hover:border-gray-600 h-full flex flex-col">
           <div className="relative aspect-[16/9]">
@@ -16,7 +16,7 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
             />
           </div>
           <div className="p-4 flex flex-col gap-2 justify-between flex-1">
-            <h4 className="font-medium flex-1 text-xl">{project.title}</h4>
+            <h4 className="font-bold flex-1 text-xl">{project.title}</h4>
             <div className="flex gap-2 flex-wrap">
               {project.category && <Category name={project.category.title} />}
             </div>
