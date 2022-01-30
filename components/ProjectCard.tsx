@@ -13,6 +13,7 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
               src={project.coverPhoto.url}
               alt="Project Thumbnail"
               layout="fill"
+              className="object-cover"
             />
           </div>
           <div className="p-4 flex flex-col gap-2 justify-between flex-1">

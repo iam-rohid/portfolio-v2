@@ -15,6 +15,10 @@ export const menu = [
     name: "Snippets",
     href: "/snippets",
   },
+  {
+    name: "Apps",
+    href: "/apps",
+  },
   // {
   //   name: "Contact",
   //   href: "/contact",

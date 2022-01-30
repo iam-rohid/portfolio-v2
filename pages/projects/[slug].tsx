@@ -29,6 +29,7 @@ const ProjectPage = ({ project }: { project: ProjectType }) => {
               src={project.coverPhoto.url}
               alt="Project Cover Photo"
               layout="fill"
+              className="object-cover"
             />
           </div>
         </Container>

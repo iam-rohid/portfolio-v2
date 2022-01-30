@@ -1,3 +1,4 @@
+import { AppType } from "./appType";
 import { BlogType } from "./blogType";
 import { CategoryType } from "./categoryType";
 import { CoverPhotoType } from "./coverPhotoType";
@@ -10,4 +11,5 @@ export type {
   SnippetType,
   CoverPhotoType,
   CategoryType,
+  AppType,
 };

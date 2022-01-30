@@ -26,7 +26,6 @@ const HomePage = ({
   featuredBlogs: BlogType[];
   featuredProjects: ProjectType[];
 }) => {
-  console.log(featuredProjects);
   return (
     <main className="flex flex-col gap-16 py-16">
       <section>
