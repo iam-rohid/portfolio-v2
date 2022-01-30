@@ -43,15 +43,15 @@ const SnippetsPage = ({ snippets }: { snippets: SnippetType[] }) => {
         onSearchValueChange={setSearchValue}
       />
       <main className="flex flex-col gap-16 py-16">
-        <Container>
-          {searchValue ? (
-            <SectionWithTitle title="Results">
-              <SnippetsList snippets={searchedSnippets} />
-            </SectionWithTitle>
-          ) : (
+        {searchValue ? (
+          <SectionWithTitle title="Results">
+            <SnippetsList snippets={searchedSnippets} />
+          </SectionWithTitle>
+        ) : (
+          <Container>
             <SnippetsList snippets={snippets} />
-          )}
-        </Container>
+          </Container>
+        )}
       </main>
     </Fragment>
   );
