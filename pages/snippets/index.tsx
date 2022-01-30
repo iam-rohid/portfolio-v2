@@ -39,12 +39,16 @@ const SnippetsPage = ({ snippets }: { snippets: SnippetType[] }) => {
     <Fragment>
       <PageHeader
         title="Snippets"
+        description="Helpful snippets. These snippets help me save lot's of time every day."
         searchValue={searchValue}
         onSearchValueChange={setSearchValue}
       />
       <main className="flex flex-col gap-16 py-16">
         {searchValue ? (
-          <SectionWithTitle title="Results">
+          <SectionWithTitle
+            title="Results"
+            trailing={`${searchedSnippets.length} Snippets`}
+          >
             <SnippetsList snippets={searchedSnippets} />
           </SectionWithTitle>
         ) : (

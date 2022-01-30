@@ -15,7 +15,7 @@ const ProjectsPage = ({
   featuredProjects: ProjectType[];
 }) => {
   const [searchValue, setSearchValue] = useState("");
-  const [projects, setProjects] = useState<ProjectType[]>([]);
+  const [searchedProjects, setSearchedProjects] = useState<ProjectType[]>([]);
 
   useEffect(() => {
     let _projects: ProjectType[] = [];
@@ -33,7 +33,7 @@ const ProjectsPage = ({
       });
       return matched;
     });
-    setProjects(_projects);
+    setSearchedProjects(_projects);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue]);
 
@@ -41,20 +41,27 @@ const ProjectsPage = ({
     <Fragment>
       <PageHeader
         title="My Projects"
+        description="Here are some of my projects. Some of them are public and others are private. You can find source code inside if it's a public project."
         searchValue={searchValue}
         onSearchValueChange={setSearchValue}
       />
       <main className="flex flex-col gap-16 py-16">
         {searchValue ? (
-          <SectionWithTitle title="Results">
-            <ProjectsList projects={projects} />
+          <SectionWithTitle
+            title="Results"
+            trailing={`${searchedProjects.length} Projects`}
+          >
+            <ProjectsList projects={searchedProjects} />
           </SectionWithTitle>
         ) : (
           <Fragment>
             <SectionWithTitle title="Featured Projects">
               <ProjectsList projects={featuredProjects} />
             </SectionWithTitle>
-            <SectionWithTitle title="All Projects">
+            <SectionWithTitle
+              title="All Projects"
+              trailing={`${allProjects.length} Projects`}
+            >
               <ProjectsList projects={allProjects} />
             </SectionWithTitle>
           </Fragment>

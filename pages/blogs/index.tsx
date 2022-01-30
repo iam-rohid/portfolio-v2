@@ -16,7 +16,7 @@ const BlogsPage = ({
   featuredBlogs: BlogType[];
 }) => {
   const [searchValue, setSearchValue] = useState("");
-  const [blogs, setBlogs] = useState<BlogType[]>([]);
+  const [searchedBlogs, setSearchedBlogs] = useState<BlogType[]>([]);
 
   useEffect(() => {
     let _blogs: BlogType[] = [];
@@ -34,7 +34,7 @@ const BlogsPage = ({
       });
       return matched;
     });
-    setBlogs(_blogs);
+    setSearchedBlogs(_blogs);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue]);
 
@@ -42,20 +42,27 @@ const BlogsPage = ({
     <Fragment>
       <PageHeader
         title="Blogs"
+        description="I recently started blogging. Here are some of my blogs. I am trying to blog regularly :)"
         searchValue={searchValue}
         onSearchValueChange={setSearchValue}
       />
       <main className="flex flex-col gap-16 py-16">
         {searchValue ? (
-          <SectionWithTitle title="Results">
-            <BlogsList blogs={blogs} />
+          <SectionWithTitle
+            title="Results"
+            trailing={`${searchedBlogs.length} Blogs`}
+          >
+            <BlogsList blogs={searchedBlogs} />
           </SectionWithTitle>
         ) : (
           <Fragment>
             <SectionWithTitle title="Featured Blogs">
               <BlogsList blogs={featuredBlogs} />
             </SectionWithTitle>
-            <SectionWithTitle title="All Blogs">
+            <SectionWithTitle
+              title="All Blogs"
+              trailing={`${allBlogs.length} Blogs`}
+            >
               <BlogsList blogs={allBlogs} />
             </SectionWithTitle>
           </Fragment>

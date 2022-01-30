@@ -34,12 +34,16 @@ const AppsPage = () => {
     <Fragment>
       <PageHeader
         title="Apps"
+        description="Some apps that I built to increase my daily productivity, decrease repetitive work. I think these apps might help you too."
         searchValue={searchValue}
         onSearchValueChange={setSearchValue}
       />
       <main className="flex flex-col gap-16 py-16">
         {searchValue ? (
-          <SectionWithTitle title="Results">
+          <SectionWithTitle
+            title="Results"
+            trailing={`${searchedApps.length} Apps`}
+          >
             <AppsList apps={searchedApps} />
           </SectionWithTitle>
         ) : (

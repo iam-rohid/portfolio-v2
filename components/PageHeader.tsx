@@ -4,13 +4,13 @@ import Container from "./Container";
 
 const PageHeader = ({
   title,
-  desc,
+  description: desc,
   searchValue,
   onSearchValueChange,
   hideSearchBar,
 }: {
   title: string;
-  desc?: string;
+  description?: string;
   searchValue?: string;
   onSearchValueChange?: (value: string) => void;
   hideSearchBar?: boolean;
