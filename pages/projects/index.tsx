@@ -34,6 +34,7 @@ const ProjectsPage = ({
       return matched;
     });
     setProjects(_projects);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue]);
 
   return (

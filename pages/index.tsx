@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 import { GetStaticProps } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import BlogsList from "../components/BlogsList";
@@ -68,11 +69,12 @@ const HomePage = ({
                 />
               </ul>
             </div>
-            <div className="w-40 h-40">
-              <img
+            <div className="w-40 h-40 relative overflow-hidden rounded-full">
+              <Image
                 src="/images/avatar.jpg"
                 alt="Avatar Image"
-                className="w-full h-full object-cover rounded-full"
+                className="w-full h-full object-cover"
+                layout="fill"
               />
             </div>
           </div>

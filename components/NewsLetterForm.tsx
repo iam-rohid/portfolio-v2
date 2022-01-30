@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const NewsLatterForm = () => {
@@ -36,21 +37,17 @@ const NewsLatterForm = () => {
         </div>
         <p className="opacity-75 mt-2">
           By subscribing, you agree with Revue’s{" "}
-          <a
-            target="_blank"
-            className="font-medium"
-            href="https://www.getrevue.co/terms"
-          >
-            Terms of Service
-          </a>{" "}
+          <Link href="https://www.getrevue.co/terms">
+            <a target="_blank" className="font-medium">
+              Terms of Service
+            </a>
+          </Link>{" "}
           and{" "}
-          <a
-            target="_blank"
-            className="font-medium"
-            href="https://www.getrevue.co/privacy"
-          >
-            Privacy Policy
-          </a>
+          <Link href="https://www.getrevue.co/privacy">
+            <a target="_blank" className="font-medium">
+              Privacy Policy
+            </a>
+          </Link>
           .
         </p>
       </form>

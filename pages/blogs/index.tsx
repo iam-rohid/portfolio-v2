@@ -35,6 +35,7 @@ const BlogsPage = ({
       return matched;
     });
     setBlogs(_blogs);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue]);
 
   return (

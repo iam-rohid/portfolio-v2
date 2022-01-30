@@ -32,6 +32,7 @@ const SnippetsPage = ({ snippets }: { snippets: SnippetType[] }) => {
       return matched;
     });
     setSearchedSnippets(_snippets);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue]);
 
   return (
