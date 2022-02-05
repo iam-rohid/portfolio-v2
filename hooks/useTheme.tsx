@@ -12,7 +12,8 @@ const ThemeProvider = ({ children }: { children: JSX.Element }) => {
 
   useEffect(() => {
     if (typeof window) {
-      setDarkMode(localStorage.getItem("theme") === "dark");
+      const isDark = localStorage.getItem("theme");
+      setDarkMode(isDark === null || isDark === "dark");
     }
   }, [typeof window]);
 

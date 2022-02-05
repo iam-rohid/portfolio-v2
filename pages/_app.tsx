@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import "../styles/main.scss";
 import Script from "next/script";
 import * as gtag from "../lib/gtag";
+import CustomCookiesConsent from "../components/CustomCookiesConsent";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -39,6 +40,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <NavBar />
         <Component {...pageProps} />
         <Footer />
+        <CustomCookiesConsent />
       </Fragment>
     </ThemeProvider>
   );
